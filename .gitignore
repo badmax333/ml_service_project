@@ -1,0 +1,55 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.env
+.venv
+*.egg-info/
+dist/
+build/
+
+# Docker
+*.log
+*.pid
+*.pid.lock
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Project specific
+models_storage/
+*.pkl
+*.pickle
+postgres_data/
+redis_data/
+.env.local
+.env.production
+
+# Alembic (versioned files are already in git, but not the .db)
+*.db
+*.sqlite
+
+# Logs
+logs/
+*.log
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Monitoring
+grafana/data/
+prometheus/data/
+
+# Telegram
+*.session
