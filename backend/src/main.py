@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from src.api.v1 import auth
+from src.api.v1 import auth_router, models_router
+from src.api.v1.transcription import router as transcription_router
 
 app = FastAPI(
     title="ML Prediction Service",
@@ -16,7 +17,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(auth.router)
+app.include_router(auth_router)
+app.include_router(models_router)
+app.include_router(transcription_router)
 
 @app.get("/")
 async def root():
