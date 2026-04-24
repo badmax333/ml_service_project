@@ -13,6 +13,8 @@ sys.path.append(str(Path(__file__).parent.parent))
 
 # Теперь импортируем из src, а не из backend.src
 from src.models.user import User
+from src.models.model_registry import ModelRegistry
+from src.models.transcription_model import TranscriptionJob
 from src.database import Base
 
 # this is the Alembic Config object, which provides
