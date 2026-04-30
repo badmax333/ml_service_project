@@ -59,5 +59,17 @@ services:
     volumes:
       - ./backend:/app
 
+  dashboard:
+    build: ./dashboard
+    ports:
+      - "8501:8501"
+    environment:
+      API_URL: http://backend:8000
+    depends_on:
+      - backend
+    volumes:
+      - ./dashboard:/app
+
+      
 volumes:
   postgres_data:
