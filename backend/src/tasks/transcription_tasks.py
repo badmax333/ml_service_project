@@ -54,6 +54,11 @@ def process_transcription(self, job_id: int, audio_path: str, model_size: str, u
         
         db.commit()
         
+        # 📊 МЕТРИКИ — добавляем после успешного коммита
+        from src.core.metrics import TRANSCRIPTIONS_TOTAL, CREDITS_SPENT
+        TRANSCRIPTIONS_TOTAL.labels(model_size=model_size, status="completed").inc()
+        CREDITS_SPENT.inc(price)
+        
         return {
             "job_id": job_id,
             "text": result["text"],
@@ -61,6 +66,10 @@ def process_transcription(self, job_id: int, audio_path: str, model_size: str, u
         }
         
     except Exception as e:
+        # 📊 МЕТРИКА ОШИБКИ
+        from src.core.metrics import TRANSCRIPTIONS_TOTAL
+        TRANSCRIPTIONS_TOTAL.labels(model_size=model_size, status="failed").inc()
+        
         db.query(TranscriptionJob).filter(TranscriptionJob.id == job_id).update({
             "status": "failed",
             "error_message": str(e)

@@ -14,6 +14,7 @@ from src.models.user import User
 from src.models.transcription_model import TranscriptionJob
 from src.config import settings
 from src.tasks.transcription_tasks import process_transcription
+from src.core.metrics import TRANSCRIPTIONS_TOTAL, CREDITS_SPENT
 
 router = APIRouter(prefix="/transcribe", tags=["Transcription"])
 

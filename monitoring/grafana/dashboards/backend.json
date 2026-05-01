@@ -1,0 +1,85 @@
+{
+  "dashboard": {
+    "title": "ML Transcription Service",
+    "timezone": "browser",
+    "panels": [
+      {
+        "title": "HTTP Requests per Second",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "rate(http_requests_total[1m])",
+            "legendFormat": "{{method}} {{endpoint}}"
+          }
+        ],
+        "gridPos": {"x": 0, "y": 0, "w": 12, "h": 8}
+      },
+      {
+        "title": "Request Latency (P95)",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "histogram_quantile(0.95, rate(http_request_duration_seconds_bucket[1m]))",
+            "legendFormat": "{{method}} {{endpoint}}"
+          }
+        ],
+        "gridPos": {"x": 12, "y": 0, "w": 12, "h": 8}
+      },
+      {
+        "title": "Active Requests",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "http_requests_active",
+            "legendFormat": "Active"
+          }
+        ],
+        "gridPos": {"x": 0, "y": 8, "w": 8, "h": 6}
+      },
+      {
+        "title": "Total Transcriptions by Model",
+        "type": "barchart",
+        "targets": [
+          {
+            "expr": "sum by (model_size) (transcriptions_total)",
+            "legendFormat": "{{model_size}}"
+          }
+        ],
+        "gridPos": {"x": 8, "y": 8, "w": 8, "h": 6}
+      },
+      {
+        "title": "Transcriptions Status",
+        "type": "piechart",
+        "targets": [
+          {
+            "expr": "sum by (status) (transcriptions_total)",
+            "legendFormat": "{{status}}"
+          }
+        ],
+        "gridPos": {"x": 16, "y": 8, "w": 8, "h": 6}
+      },
+      {
+        "title": "Credits Spent (Total)",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "credits_spent_total",
+            "legendFormat": "Total Credits"
+          }
+        ],
+        "gridPos": {"x": 0, "y": 14, "w": 6, "h": 4}
+      },
+      {
+        "title": "Total Users",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "users_total",
+            "legendFormat": "Users"
+          }
+        ],
+        "gridPos": {"x": 6, "y": 14, "w": 6, "h": 4}
+      }
+    ]
+  }
+}
