@@ -278,3 +278,7 @@ Streamlit-приложение на http://localhost:8501 предоставля
 - celery_worker: `celery -A src.core.celery_app worker --loglevel=info`
 
 Healthcheck настроен для `postgres` и `redis`, поэтому backend и воркер гарантированно стартуют только после полной готовности зависимостей.
+
+## 📊 Покрытие кода
+
+[![coverage](https://img.shields.io/badge/coverage-73.6%25-brightgreen)](reports/coverage_html/index.html)
