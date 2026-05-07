@@ -107,13 +107,14 @@ Streamlit Dashboard (:8501) ──► backend API
 ```
 ml_service_project/
 ├── backend/                    # FastAPI-приложение + Celery-воркер
-│   └── src/
-│       ├── main.py             # Точка входа FastAPI
-│       ├── core/
-│       │   ├── celery_app.py   # Конфигурация Celery
-│       │   └── config.py       # Настройки приложения
-│       ├── api/                # Роутеры (endpoints)
-│       └── models/             # SQLAlchemy-модели
+│   ├── src/
+│   │   ├── main.py             # Точка входа FastAPI
+│   │   ├── core/
+│   │   │   ├── celery_app.py   # Конфигурация Celery
+│   │   │   └── config.py       # Настройки приложения
+│   │   ├── api/                # Роутеры (endpoints)
+│   │   └── models/             # SQLAlchemy-модели
+│   └── tests/                  # Тесты (на одном уровне с src)
 │
 ├── dashboard/                  # Streamlit-приложение
 │
