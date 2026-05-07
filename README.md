@@ -114,7 +114,7 @@ ml_service_project/
 │   │   │   └── config.py       # Настройки приложения
 │   │   ├── api/                # Роутеры (endpoints)
 │   │   └── models/             # SQLAlchemy-модели
-│   └── tests/                  # Тесты (на одном уровне с src)
+│   └── tests/                  # Тесты
 │
 ├── dashboard/                  # Streamlit-приложение
 │
